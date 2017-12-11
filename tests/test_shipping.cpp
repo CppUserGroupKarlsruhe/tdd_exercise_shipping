@@ -27,6 +27,14 @@ TEST(ParcelTest, FailOnNonNegativeWeight) {
     EXPECT_THROW(parcel(1, 2, 4, 0), std::runtime_error);
 }
 
+TEST(ParcelTest, StoresPhysicalData) {
+    parcel const p(1, 2, 3, 4);
+    EXPECT_EQ(p.length, 1);
+    EXPECT_EQ(p.width, 2);
+    EXPECT_EQ(p.height, 3);
+    EXPECT_EQ(p.weight, 4);
+}
+
 TEST(GetReindeerPriceTest, FailOnParcelTooLarge) {
     EXPECT_THROW(get_reindeer_price({300, 300, 300, 300}), std::runtime_error);
 }
