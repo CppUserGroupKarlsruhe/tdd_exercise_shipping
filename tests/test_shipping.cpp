@@ -33,3 +33,7 @@ TEST(GetReindeerPriceTest, FailOnNonNegativeWeight) {
 TEST(GetReindeerPriceTest, FailOnParcelTooLarge) {
     EXPECT_THROW(get_reindeer_price(300, 300, 300, 300), std::runtime_error);
 }
+
+TEST(GetReindeerPriceTest, LowestPrice) {
+    EXPECT_EQ(get_reindeer_price(1, 1, 1, 1), 2.99);
+}
