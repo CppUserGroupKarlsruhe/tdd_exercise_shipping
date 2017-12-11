@@ -55,5 +55,22 @@ Follow the instructions in the `README.md` file in the `cpp` branch:
 > git clone https://github.com/blue-yonder/tdd_exercise_shipping.git
 > cd tdd_exercise_shipping
 > git checkout cpp
-> cat README.md
+> cmake
 ```
+
+The header file `shipping/shipping/shipping.h` is supposed to hold any public
+declarations you require. The source file `shipping/src/shipping.cpp` is supposed
+to hold your implementation. Finally, drive your implementation by adding
+tests to the `tests/test_shipping.cpp` file.
+
+To compile your code and execute the unit tests, use the following commands:
+
+```
+> make && ctest --verbose
+```
+
+Running this command for the first time will present you with a _failing_ unit
+test. The unit test does not do anything meaningful, it is just there to
+illustrate how writing tests with googletest works (see
+[here](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#basic-assertions)
+for more information on googletest).
