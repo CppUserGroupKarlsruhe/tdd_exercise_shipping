@@ -19,3 +19,8 @@ TEST(GetReindeerPriceTest, FailOnNonNegativeWidth) {
     EXPECT_THROW(get_reindeer_price(1, -2, 3, 4), std::runtime_error);
     EXPECT_THROW(get_reindeer_price(1, 0, 3, 4), std::runtime_error);
 }
+
+TEST(GetReindeerPriceTest, FailOnNonNegativeHeight) {
+    EXPECT_THROW(get_reindeer_price(1, 2, -3, 4), std::runtime_error);
+    EXPECT_THROW(get_reindeer_price(1, 2, 0, 4), std::runtime_error);
+}
