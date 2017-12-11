@@ -4,7 +4,7 @@
 
 namespace shipping {
 
-double get_reindeer_price(double length, double width, double height, double) {
+double get_reindeer_price(double length, double width, double height, double weight) {
     if (length <= 0) {
         throw std::runtime_error("The parcel must have positive length");
     }
@@ -13,6 +13,9 @@ double get_reindeer_price(double length, double width, double height, double) {
     }
     if (height <= 0) {
         throw std::runtime_error("The parcel must have positive height");
+    }
+    if (weight <= 0) {
+        throw std::runtime_error("The parcel must have positive weight");
     }
 }
 
