@@ -2,6 +2,6 @@
 
 #include <gtest/gtest.h>
 
-TEST(ShippingTest, Dummy) {
-    EXPECT_EQ(1, 0);
+TEST(GetReindeerPriceTest, Dummy) {
+    get_reindeer_price(1, 2, 3, 4);
 }
