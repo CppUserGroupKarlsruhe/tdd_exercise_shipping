@@ -2,6 +2,6 @@
 
 namespace shipping {
 
-double get_reindeer_price(double length, double, double, double);
+double get_reindeer_price(double length, double width, double, double);
 
 }
