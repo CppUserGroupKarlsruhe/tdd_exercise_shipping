@@ -24,6 +24,12 @@ namespace {
 
 namespace shipping {
 
+parcel::parcel(double length, double width, double height, double weight)
+{
+    check_physical_attributes(length, width, height, weight);
+}
+
+
 double get_reindeer_price(double length, double width, double height, double weight) {
     check_physical_attributes(length, width, height, weight);
     if (width > 30) {
