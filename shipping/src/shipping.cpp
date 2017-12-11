@@ -24,7 +24,11 @@ namespace {
 
 namespace shipping {
 
-parcel::parcel(double length, double width, double height, double weight)
+parcel::parcel(double length, double width, double height, double weight) :
+    length(length),
+    width(width),
+    height(height),
+    weight(weight)
 {
     check_physical_attributes(length, width, height, weight);
 }
