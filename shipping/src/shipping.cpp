@@ -30,11 +30,10 @@ parcel::parcel(double length, double width, double height, double weight)
 }
 
 
-double get_reindeer_price(double length, double width, double height, double weight) {
-    check_physical_attributes(length, width, height, weight);
-    if (width > 30) {
-        throw std::runtime_error("The parcel is too large");
-    }
+double get_reindeer_price(parcel const & parcel) {
+//    if (width > 30) {
+//        throw std::runtime_error("The parcel is too large");
+//    }
     return 2.99;
 }
 
