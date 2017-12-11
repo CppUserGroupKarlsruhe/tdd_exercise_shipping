@@ -32,4 +32,5 @@ TEST(GetReindeerPriceTest, FailOnParcelTooLarge) {
 
 TEST(GetReindeerPriceTest, LowestPrice) {
     EXPECT_EQ(get_reindeer_price(1, 1, 1, 1), 2.99);
+    EXPECT_EQ(get_reindeer_price(30, 20, 20, 2), 2.99);
 }
