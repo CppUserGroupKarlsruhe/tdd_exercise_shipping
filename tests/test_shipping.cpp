@@ -44,12 +44,16 @@ TEST(GetReindeerPriceTest, LowestPrice) {
     EXPECT_EQ(get_reindeer_price({30, 20, 20, 2}), 2.99);
 }
 
-TEST(GetReindeerPriceTest, SecondLowestPrice) {
+TEST(GetReindeerPriceTest, SecondLowestPriceLowerBound) {
     double const delta = 0.01;
     EXPECT_EQ(get_reindeer_price({30 + delta, 20, 20, 2}), 4.99);
     EXPECT_EQ(get_reindeer_price({30, 20 + delta, 20, 2}), 4.99);
     EXPECT_EQ(get_reindeer_price({30, 20, 20 + delta, 2}), 4.99);
     EXPECT_EQ(get_reindeer_price({30, 20, 20, 2 + delta}), 4.99);
+}
+
+TEST(GetReindeerPriceTest, SecondLowestPriceUpperBound) {
+    EXPECT_EQ(get_reindeer_price({40, 30, 20, 4}), 4.99);
 }
 
 TEST(GetReindeerPriceTest, SecondLowestPriceWithSwappedDimensions) {
