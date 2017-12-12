@@ -6,6 +6,7 @@
 
 using shipping::parcel;
 using shipping::tariff;
+using shipping::pricelist;
 
 TEST(ParcelTest, FailOnNonPositiveLength) {
     EXPECT_THROW(parcel(-1, 2, 3, 4), std::runtime_error);
@@ -64,4 +65,12 @@ TEST(TariffTest, ConstructorProperties) {
     tariff t(upper_limit, expected_price);
     EXPECT_EQ(t.upper_limit.weight, upper_limit.weight);
     EXPECT_EQ(t.price, expected_price);
+}
+
+
+TEST(PricelistTest, IsSortedByPrice) {
+    parcel const limit(1, 1, 1, 1);
+    std::vector<tariff> tariffs = {{limit, 3}, {limit, 1}, {limit, 2}};
+
+    pricelist prices(tariffs);
 }
