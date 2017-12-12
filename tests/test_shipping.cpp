@@ -36,8 +36,13 @@ TEST(ParcelTest, StoresPhysicalDataWithSortedDimensions) {
 }
 
 TEST(ParcelTest, FitsIntoTrue) {
-    parcel const p(2, 1, 3, 4);
+    parcel const p(1, 2, 3, 4);
+    double const delta = 0.01;
     EXPECT_TRUE(p.fits_into(p));
+    EXPECT_TRUE(p.fits_into(parcel{1 + delta, 2, 3, 4}));
+    EXPECT_TRUE(p.fits_into(parcel{1, 2 + delta, 3, 4}));
+    EXPECT_TRUE(p.fits_into(parcel{1, 2, 3 + delta, 4}));
+    EXPECT_TRUE(p.fits_into(parcel{1, 2, 3, 4 + delta}));
 }
 
 
