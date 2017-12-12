@@ -42,7 +42,7 @@ parcel::parcel(double length, double width, double height, double weight) :
 
 bool parcel::fits_into(parcel const & other) const
 {
-    return (dimensions[1] <= other.dimensions[1]) and (dimensions[2] <= other.dimensions[2]);
+    return (dimensions[0] <= other.dimensions[0]) and (dimensions[1] <= other.dimensions[1]) and (dimensions[2] <= other.dimensions[2]);
 }
 
 
