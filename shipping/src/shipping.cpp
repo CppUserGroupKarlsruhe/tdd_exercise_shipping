@@ -39,7 +39,7 @@ double get_reindeer_price(parcel const & parcel)
     if (parcel.width > 30) {
         throw std::runtime_error("The parcel is too large");
     }
-    if ((parcel.width > 20) or (parcel.length > 30)) {
+    if ((parcel.length > 30) or (parcel.width > 20) or (parcel.height > 20)) {
         return 4.99;
     }
 
