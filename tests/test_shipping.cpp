@@ -65,7 +65,7 @@ TEST(GetReindeerPriceTest, SecondLowestPriceWithSwappedDimensions) {
 TEST(GetReindeerPriceTest, ThirdLowestPriceLowerBound) {
     double const delta = 0.01;
     EXPECT_EQ(get_reindeer_price({40 + delta, 10, 20, 4}), 5.99);
-    EXPECT_EQ(get_reindeer_price({40, 10 + delta, 60, 4}), 5.99);
+    EXPECT_EQ(get_reindeer_price({40, 10 + delta, 40, 4}), 5.99);
     EXPECT_EQ(get_reindeer_price({40, 10, 20 + delta, 4}), 5.99);
     EXPECT_EQ(get_reindeer_price({40, 10, 20, 4 + delta}), 5.99);
 }
