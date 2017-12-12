@@ -48,9 +48,13 @@ bool parcel::fits_into(parcel const &other) const
            and (weight <= other.weight);
 }
 
-tariff::tariff(parcel upper_limit, double price)
+tariff::tariff(parcel upper_limit, double price) :
+    upper_limit(upper_limit),
+    price(price)
 {
-    throw std::runtime_error("Price must be a positive number");
+    if (price <= 0) {
+        throw std::runtime_error("Price must be a positive number");
+    }
 }
 
 

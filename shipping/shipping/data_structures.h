@@ -13,6 +13,8 @@ struct parcel {
 
 struct tariff {
     tariff(parcel upper_limit, double price);
+    parcel upper_limit;
+    double const price;
 };
 
 }
