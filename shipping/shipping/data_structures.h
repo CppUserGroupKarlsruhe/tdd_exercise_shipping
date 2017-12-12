@@ -15,9 +15,13 @@ private:
 };
 
 struct tariff {
+public:
     tariff(parcel upper_limit, double price);
+    bool available_for(parcel const & other) const;
+    double get_price() const;
+private:
     parcel upper_limit;
-    double const price;
+    double price;
 };
 
 struct pricelist {

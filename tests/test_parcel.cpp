@@ -55,8 +55,9 @@ TEST(TariffTest, ConstructorProperties) {
     double const expected_price = 5;
 
     tariff t(upper_limit, expected_price);
-    EXPECT_EQ(t.upper_limit.weight, upper_limit.weight);
-    EXPECT_EQ(t.price, expected_price);
+    EXPECT_TRUE(t.available_for(upper_limit));
+    EXPECT_FALSE(t.available_for(parcel(1 + 0.01, 2, 3, 4)));
+    EXPECT_EQ(t.get_price(), expected_price);
 }
 
 
@@ -66,7 +67,7 @@ TEST(PricelistTest, IsSortedByPrice) {
 
     pricelist prices(tariffs);
     ASSERT_EQ(prices.tariffs.size(), tariffs.size());
-    EXPECT_EQ(prices.tariffs[0].price, 1);
-    EXPECT_EQ(prices.tariffs[1].price, 2);
-    EXPECT_EQ(prices.tariffs[2].price, 3);
+    EXPECT_EQ(prices.tariffs[0].get_price(), 1);
+    EXPECT_EQ(prices.tariffs[1].get_price(), 2);
+    EXPECT_EQ(prices.tariffs[2].get_price(), 3);
 }

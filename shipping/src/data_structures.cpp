@@ -33,7 +33,7 @@ std::array<double, 3> sorted(double x, double y, double z)
 
 std::vector<tariff> sorted(std::vector<tariff> tariffs)
 {
-    auto by_ascending_price = [](tariff const & a, tariff const & b) {return a.price < b.price;};
+    auto by_ascending_price = [](tariff const & a, tariff const & b) {return a.get_price() < b.get_price();};
     std::sort(tariffs.begin(), tariffs.end(), by_ascending_price);
     return tariffs;
 }
@@ -62,6 +62,16 @@ tariff::tariff(parcel upper_limit, double price) :
     if (price <= 0) {
         throw std::runtime_error("Price must be a positive number");
     }
+}
+
+bool tariff::available_for(parcel const & other) const
+{
+    return other.fits_into(upper_limit);
+}
+
+double tariff::get_price() const
+{
+    return price;
 }
 
 pricelist::pricelist(std::vector<tariff> tariffs) :
