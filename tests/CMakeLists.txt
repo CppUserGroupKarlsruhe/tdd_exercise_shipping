@@ -1,4 +1,4 @@
-set(TEST_FILES test_shipping.cpp)
+set(TEST_FILES test_shipping.cpp test_parcel.cpp)
 
 add_executable(test_shipping ${TEST_FILES})
 add_dependencies(test_shipping shipping)
