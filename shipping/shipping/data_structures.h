@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <vector>
 
 namespace shipping {
 
@@ -15,6 +16,10 @@ struct tariff {
     tariff(parcel upper_limit, double price);
     parcel upper_limit;
     double const price;
+};
+
+struct pricelist {
+    pricelist(std::vector<tariff> tariffs);
 };
 
 }

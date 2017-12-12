@@ -57,5 +57,8 @@ tariff::tariff(parcel upper_limit, double price) :
     }
 }
 
+pricelist::pricelist(std::vector<tariff> tariffs)
+{}
+
 
 }
