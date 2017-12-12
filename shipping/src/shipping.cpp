@@ -57,6 +57,9 @@ double get_reindeer_price(parcel const & p)
     if (p.fits_into(parcel{40, 30, 20, 4})) {
         return 4.99;
     }
+    if (p.fits_into(parcel{60, 10, 60, 4})) {
+        return 5.99;
+    }
     throw std::runtime_error("The parcel is too large");
 }
 
