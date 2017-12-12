@@ -89,3 +89,18 @@ TEST(GetReindeerPriceTest, ThirdLowestPriceLowerBound) {
 TEST(GetReindeerPriceTest, ThirdLowestPriceUpperBound) {
     EXPECT_EQ(get_reindeer_price({60, 10, 60, 4}), 5.99);
 }
+
+TEST(GetReindeerPriceTest, LargestPriceLowerBound) {
+    double const delta = 0.01;
+    EXPECT_EQ(get_reindeer_price({60 + delta, 10, 60, 4}), 14.99);
+    EXPECT_EQ(get_reindeer_price({60, 10 + delta, 60, 4}), 14.99);
+    EXPECT_EQ(get_reindeer_price({60, 10, 60 , 4 + delta}), 14.99);
+    EXPECT_EQ(get_reindeer_price({40 + delta, 30, 20, 5}), 14.99);
+    EXPECT_EQ(get_reindeer_price({40, 30 + delta, 20, 5}), 14.99);
+    EXPECT_EQ(get_reindeer_price({40, 30, 20 + delta, 5}), 14.99);
+    EXPECT_EQ(get_reindeer_price({40, 30, 20, 5 + delta}), 14.99);
+}
+
+TEST(GetReindeerPriceTest, LargestPriceUpperBound) {
+    EXPECT_EQ(get_reindeer_price({120, 60, 60, 30}), 14.99);
+}
