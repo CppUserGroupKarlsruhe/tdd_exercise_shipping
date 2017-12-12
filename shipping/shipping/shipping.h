@@ -1,12 +1,12 @@
 #pragma once
 
+#include <array>
+
 namespace shipping {
 
 struct parcel {
     parcel(double length, double width, double height, double weight);
-    double const length;
-    double const width;
-    double const height;
+    std::array<double, 3> const dimensions;
     double const weight;
 };
 

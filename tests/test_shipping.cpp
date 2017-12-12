@@ -29,9 +29,9 @@ TEST(ParcelTest, FailOnNonNegativeWeight) {
 
 TEST(ParcelTest, StoresPhysicalData) {
     parcel const p(1, 2, 3, 4);
-    EXPECT_EQ(p.length, 1);
-    EXPECT_EQ(p.width, 2);
-    EXPECT_EQ(p.height, 3);
+    EXPECT_EQ(p.dimensions[0], 1);
+    EXPECT_EQ(p.dimensions[1], 2);
+    EXPECT_EQ(p.dimensions[2], 3);
     EXPECT_EQ(p.weight, 4);
 }
 

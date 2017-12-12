@@ -25,9 +25,7 @@ namespace {
 namespace shipping {
 
 parcel::parcel(double length, double width, double height, double weight) :
-    length(length),
-    width(width),
-    height(height),
+    dimensions{{length, width, height}},
     weight(weight)
 {
     check_physical_attributes(length, width, height, weight);
@@ -36,10 +34,10 @@ parcel::parcel(double length, double width, double height, double weight) :
 
 double get_reindeer_price(parcel const & parcel)
 {
-    if (parcel.width > 30) {
+    if (parcel.dimensions[1] > 30) {
         throw std::runtime_error("The parcel is too large");
     }
-    if ((parcel.length > 30) or (parcel.width > 20) or (parcel.height > 20) or (parcel.weight > 2)) {
+    if ((parcel.dimensions[0] > 30) or (parcel.dimensions[1] > 20) or (parcel.dimensions[2] > 20) or (parcel.weight > 2)) {
         return 4.99;
     }
 
