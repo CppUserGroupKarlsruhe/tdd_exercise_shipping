@@ -28,7 +28,7 @@ TEST(ParcelTest, FailOnNonNegativeWeight) {
 }
 
 TEST(ParcelTest, StoresPhysicalDataWithSortedDimensions) {
-    parcel const p(1, 2, 3, 4);
+    parcel const p(2, 1, 3, 4);
     EXPECT_EQ(p.dimensions[0], 3);
     EXPECT_EQ(p.dimensions[1], 2);
     EXPECT_EQ(p.dimensions[2], 1);
