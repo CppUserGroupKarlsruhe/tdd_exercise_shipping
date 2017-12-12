@@ -73,4 +73,8 @@ TEST(PricelistTest, IsSortedByPrice) {
     std::vector<tariff> tariffs = {{limit, 3}, {limit, 1}, {limit, 2}};
 
     pricelist prices(tariffs);
+    ASSERT_EQ(prices.tariffs.size(), tariffs.size());
+    EXPECT_EQ(prices.tariffs[0].price, 1);
+    EXPECT_EQ(prices.tariffs[1].price, 2);
+    EXPECT_EQ(prices.tariffs[2].price, 3);
 }
