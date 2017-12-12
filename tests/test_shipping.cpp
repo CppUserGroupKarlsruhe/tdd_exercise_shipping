@@ -54,7 +54,10 @@ TEST(ParcelTest, FitsInto) {
 
 
 TEST(GetReindeerPriceTest, FailOnParcelTooLarge) {
-    EXPECT_THROW(get_reindeer_price({300, 300, 300, 300}), std::runtime_error);
+    double const delta = 0.01;
+    EXPECT_THROW(get_reindeer_price({120 + delta, 60, 60, 30}), std::runtime_error);
+    EXPECT_THROW(get_reindeer_price({120, 60 + delta, 60, 30}), std::runtime_error);
+    EXPECT_THROW(get_reindeer_price({120, 60, 60, 30 + delta}), std::runtime_error);
 }
 
 TEST(GetReindeerPriceTest, LowestPrice) {
