@@ -43,10 +43,14 @@ parcel::parcel(double length, double width, double height, double weight) :
 
 double get_reindeer_price(parcel const & parcel)
 {
-    if (parcel.dimensions[1] > 30) {
+    if (parcel.dimensions[0] > 41) {
         throw std::runtime_error("The parcel is too large");
     }
     if ((parcel.dimensions[0] > 30) or (parcel.dimensions[1] > 20) or (parcel.dimensions[2] > 20) or (parcel.weight > 2)) {
+        return 4.99;
+    }
+
+    if ((parcel.dimensions[0] > 40) or (parcel.dimensions[1] > 30) or (parcel.dimensions[2] > 20) or (parcel.weight > 4)) {
         return 4.99;
     }
 
