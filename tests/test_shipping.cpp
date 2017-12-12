@@ -71,7 +71,7 @@ TEST(GetReindeerPriceTest, SecondLowestPriceLowerBound) {
 }
 
 TEST(GetReindeerPriceTest, SecondLowestPriceUpperBound) {
-    EXPECT_EQ(get_reindeer_price({40, 30, 20, 4}), 4.99);
+    EXPECT_EQ(get_reindeer_price({40, 30, 20, 5}), 4.99);
 }
 
 TEST(GetReindeerPriceTest, SecondLowestPriceWithSwappedDimensions) {
