@@ -20,6 +20,7 @@ struct tariff {
 
 struct pricelist {
     pricelist(std::vector<tariff> tariffs);
+    std::vector<tariff> const tariffs;
 };
 
 }

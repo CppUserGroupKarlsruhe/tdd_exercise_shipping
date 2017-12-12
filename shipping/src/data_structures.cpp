@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <functional>
 
+namespace shipping {
+
 namespace {
 
 void check_physical_attributes(double length, double width, double height, double weight)
@@ -29,9 +31,14 @@ std::array<double, 3> sorted(double x, double y, double z)
     return dimensions;
 };
 
+std::vector<tariff> sorted(std::vector<tariff> tariffs)
+{
+    auto by_ascending_price = [](tariff const & a, tariff const & b) {return a.price < b.price;};
+    std::sort(tariffs.begin(), tariffs.end(), by_ascending_price);
+    return tariffs;
 }
 
-namespace shipping {
+}
 
 parcel::parcel(double length, double width, double height, double weight) :
     dimensions(sorted(length, width, height)),
@@ -57,7 +64,8 @@ tariff::tariff(parcel upper_limit, double price) :
     }
 }
 
-pricelist::pricelist(std::vector<tariff> tariffs)
+pricelist::pricelist(std::vector<tariff> tariffs) :
+    tariffs(sorted(std::move(tariffs)))
 {}
 
 
