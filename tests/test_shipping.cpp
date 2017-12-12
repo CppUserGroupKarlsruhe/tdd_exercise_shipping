@@ -45,6 +45,7 @@ TEST(ParcelTest, FitsInto) {
     EXPECT_TRUE(p.fits_into(parcel{1, 2, 3, 4 + delta}));
     EXPECT_FALSE(p.fits_into(parcel{1 - delta, 2, 3, 4}));
     EXPECT_FALSE(p.fits_into(parcel{1, 2 - delta, 3, 4}));
+    EXPECT_FALSE(p.fits_into(parcel{1, 2, 3 - delta, 4}));
 }
 
 
