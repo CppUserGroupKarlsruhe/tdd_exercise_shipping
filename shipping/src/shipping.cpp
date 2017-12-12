@@ -40,6 +40,11 @@ parcel::parcel(double length, double width, double height, double weight) :
     check_physical_attributes(length, width, height, weight);
 }
 
+bool parcel::fits_into(parcel const & other) const
+{
+    return true;
+}
+
 
 double get_reindeer_price(parcel const & parcel)
 {
