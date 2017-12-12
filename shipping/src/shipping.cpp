@@ -54,7 +54,7 @@ double get_reindeer_price(parcel const & p)
     if (p.fits_into(parcel{30, 20, 20, 2})) {
         return 2.99;
     }
-    if (p.fits_into(parcel{40, 30, 20, 4})) {
+    if (p.fits_into(parcel{40, 30, 20, 5})) {
         return 4.99;
     }
     if (p.fits_into(parcel{60, 10, 60, 4})) {
