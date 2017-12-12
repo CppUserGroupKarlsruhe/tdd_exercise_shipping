@@ -85,3 +85,7 @@ TEST(GetReindeerPriceTest, ThirdLowestPriceLowerBound) {
     EXPECT_EQ(get_reindeer_price({40 + delta, 10, 20, 4}), 5.99);
     EXPECT_EQ(get_reindeer_price({40, 30 + delta, 10, 4}), 5.99);
 }
+
+TEST(GetReindeerPriceTest, ThirdLowestPriceUpperBound) {
+    EXPECT_EQ(get_reindeer_price({60, 10, 60, 4}), 5.99);
+}
