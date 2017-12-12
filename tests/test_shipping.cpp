@@ -48,4 +48,5 @@ TEST(GetReindeerPriceTest, SecondLowestPrice) {
     double const delta = 0.01;
     EXPECT_EQ(get_reindeer_price({30 + delta, 20, 20, 2}), 4.99);
     EXPECT_EQ(get_reindeer_price({30, 20 + delta, 20, 2}), 4.99);
+    EXPECT_EQ(get_reindeer_price({30, 20, 20 + delta, 2}), 4.99);
 }
