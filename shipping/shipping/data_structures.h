@@ -11,4 +11,8 @@ struct parcel {
     double const weight;
 };
 
+struct tariff {
+    tariff(parcel upper_limit, double price);
+};
+
 }
