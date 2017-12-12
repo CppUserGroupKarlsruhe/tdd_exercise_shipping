@@ -56,3 +56,12 @@ TEST(TariffTest, FailOnNonPositivePrice) {
     EXPECT_THROW(tariff(parcel(1, 2, 3, 4), -1.2), std::runtime_error);
     EXPECT_THROW(tariff(parcel(1, 2, 3, 4), 0), std::runtime_error);
 }
+
+TEST(TariffTest, ConstructorProperties) {
+    parcel const upper_limit(1, 2, 3, 4);
+    double const expected_price = 5;
+
+    tariff t(upper_limit, expected_price);
+    EXPECT_EQ(t.upper_limit.weight, upper_limit.weight);
+    EXPECT_EQ(t.price, expected_price);
+}
