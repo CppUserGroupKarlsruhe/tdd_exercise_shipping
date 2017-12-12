@@ -35,6 +35,13 @@ TEST(ParcelTest, StoresPhysicalDataWithSortedDimensions) {
     EXPECT_EQ(p.weight, 4);
 }
 
+TEST(ParcelTest, FitsIntoTrue) {
+    parcel const p(2, 1, 3, 4);
+    EXPECT_TRUE(p.fits_into(p));
+}
+
+
+
 TEST(GetReindeerPriceTest, FailOnParcelTooLarge) {
     EXPECT_THROW(get_reindeer_price({300, 300, 300, 300}), std::runtime_error);
 }
