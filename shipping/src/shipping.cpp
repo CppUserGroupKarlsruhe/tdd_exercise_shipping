@@ -1,6 +1,8 @@
 #include <shipping/shipping.h>
 
 #include <stdexcept>
+#include <algorithm>
+#include <functional>
 
 namespace {
 
@@ -20,12 +22,19 @@ namespace {
         }
     }
 
+    std::array<double, 3> sorted(double x, double y, double z)
+    {
+        std::array<double, 3> dimensions = {{x, y, z}};
+        std::sort(dimensions.begin(), dimensions.end(), std::greater<double>());
+        return dimensions;
+    };
+
 }
 
 namespace shipping {
 
 parcel::parcel(double length, double width, double height, double weight) :
-    dimensions{{length, width, height}},
+    dimensions(sorted(length, width, height)),
     weight(weight)
 {
     check_physical_attributes(length, width, height, weight);
