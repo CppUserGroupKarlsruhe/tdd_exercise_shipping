@@ -5,6 +5,7 @@
 #include <stdexcept>
 
 using shipping::parcel;
+using shipping::tariff;
 
 TEST(ParcelTest, FailOnNonPositiveLength) {
     EXPECT_THROW(parcel(-1, 2, 3, 4), std::runtime_error);
@@ -48,4 +49,10 @@ TEST(ParcelTest, FitsInto) {
     EXPECT_FALSE(p.fits_into(parcel{1, 2 - delta, 3, 4}));
     EXPECT_FALSE(p.fits_into(parcel{1, 2, 3 - delta, 4}));
     EXPECT_FALSE(p.fits_into(parcel{1, 2, 3, 4 - delta}));
+}
+
+
+TEST(TariffTest, FailOnNonPositivePrice) {
+    EXPECT_THROW(tariff(parcel(1, 2, 3, 4), -1.2), std::runtime_error);
+    EXPECT_THROW(tariff(parcel(1, 2, 3, 4), 0), std::runtime_error);
 }
