@@ -9,27 +9,36 @@ using shipping::reindeer_prices;
 using shipping::fair_and_square_prices;
 using shipping::get_best_price;
 using shipping::parcel;
+using shipping::tariff;
+using shipping::pricelist;
 
 TEST(GetBestPrice, FailOnNoSuitableTariff) {
     parcel const p(1, 2, 3, 4);
-    shipping::tariff const unsuitable_tariff({1, 1, 1, 1}, 1);
+    tariff const unsuitable_tariff({1, 1, 1, 1}, 1);
 
-    EXPECT_THROW(get_best_price(p, shipping::pricelist({})), std::runtime_error);
-    EXPECT_THROW(get_best_price(p, shipping::pricelist({unsuitable_tariff})), std::runtime_error);
+    EXPECT_THROW(get_best_price(p, pricelist({})), std::runtime_error);
+    EXPECT_THROW(get_best_price(p, pricelist({unsuitable_tariff})), std::runtime_error);
 }
 
 TEST(GetBestPrice, PickCheapestMatchingTariff) {
     parcel const p(1, 2, 3, 4);
-    shipping::tariff const cheapest({10, 10, 10, 10}, 1);
-    shipping::tariff const more_expensive({10, 10, 10, 10}, 2);
+    tariff const cheapest({10, 10, 10, 10}, 1);
+    tariff const more_expensive({10, 10, 10, 10}, 2);
 
-    EXPECT_EQ(get_best_price(p, shipping::pricelist({more_expensive, cheapest})), cheapest.get_price());
+    EXPECT_EQ(get_best_price(p, pricelist({more_expensive, cheapest})), cheapest.get_price());
 }
 
 TEST(GetBestPriceAmongMultipleCarriers, NoCarrier)
 {
     parcel const p(1, 2, 3, 4);
     EXPECT_THROW(get_best_price(p, {}), std::runtime_error);
+}
+
+TEST(GetBestPriceAmongMultipleCarriers, NoMatchingCarrier)
+{
+    parcel const p(1, 2, 3, 4);
+    pricelist const unsuitable_carrier({{{1, 1, 1, 1}, 1}});
+    EXPECT_THROW(get_best_price(p, {unsuitable_carrier}), std::runtime_error);
 }
 
 TEST(ReindeerPricesTest, UnsupportedParcels) {
