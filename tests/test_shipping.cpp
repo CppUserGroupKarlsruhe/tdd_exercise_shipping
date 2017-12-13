@@ -12,7 +12,9 @@ using shipping::parcel;
 TEST(GetBestPrice, FailOnNoSuitableTariff) {
     parcel const p(1, 2, 3, 4);
     shipping::tariff const unsuitable_tariff({1, 1, 1, 1}, 1);
+
     EXPECT_THROW(get_best_price(p, shipping::pricelist({})), std::runtime_error);
+    EXPECT_THROW(get_best_price(p, shipping::pricelist({unsuitable_tariff})), std::runtime_error);
 }
 
 
