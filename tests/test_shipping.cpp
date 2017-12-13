@@ -86,14 +86,14 @@ TEST(FairAndSquarePricesTest, SupportedParcels) {
         {{25, 25, 25, 2.5 + delta}, 4},
         {{35, 35, 35, 5}, 4},
 
-        {{35, 35, 35, 5}, 56.25},
-        {{35, 35, 35, 5}, 56.25},
+        {{35 + delta, 35, 35, 5}, 56.25},
+        {{35, 35, 35, 5 + delta}, 56.25},
         {{100, 100, 100, 75}, 56.25}
     };
 
     for (auto const & expectation : expectations) {
         auto const & parcel = expectation.first;
         auto const expected_price = expectation.second;
-        EXPECT_EQ(get_best_price(parcel, reindeer_prices), expected_price);
+        EXPECT_EQ(get_best_price(parcel, fair_and_square_prices), expected_price);
     }
 }
