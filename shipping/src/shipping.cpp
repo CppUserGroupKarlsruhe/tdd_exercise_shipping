@@ -16,6 +16,12 @@ double get_best_price(parcel const & parcel, pricelist const & tariffs)
 
 double get_best_price(parcel const & parcel, std::vector<pricelist> const & carriers)
 {
+    for (auto const & carrier : carriers) {
+        try {
+            return get_best_price(parcel, carrier);
+        } catch (std::runtime_error const &) {}
+    }
+
     throw std::runtime_error("No suitable carrier found for parcel");
 }
 

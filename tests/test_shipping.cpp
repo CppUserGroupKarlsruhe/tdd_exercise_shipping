@@ -47,7 +47,7 @@ TEST(GetBestPriceAmongMultipleCarriers, SoleMatchingCarrier)
     double const expected_price = 123;
     pricelist const unsuitable_carrier({{{1, 1, 1, 1}, 1}});
     pricelist const carrier({{{10, 10, 10, 10}, expected_price}});
-    EXPECT_EQ(get_best_price(p, {unsuitable_carrier, carrier, unsuitable_carrier}), expected_price + 1);
+    EXPECT_EQ(get_best_price(p, {unsuitable_carrier, carrier, unsuitable_carrier}), expected_price);
 }
 
 TEST(ReindeerPricesTest, UnsupportedParcels) {
