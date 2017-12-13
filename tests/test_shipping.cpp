@@ -38,7 +38,16 @@ TEST(GetBestPriceAmongMultipleCarriers, NoMatchingCarrier)
 {
     parcel const p(1, 2, 3, 4);
     pricelist const unsuitable_carrier({{{1, 1, 1, 1}, 1}});
-    EXPECT_THROW(get_best_price(p, {unsuitable_carrier}), std::runtime_error);
+    EXPECT_THROW(get_best_price(p, {unsuitable_carrier, unsuitable_carrier}), std::runtime_error);
+}
+
+TEST(GetBestPriceAmongMultipleCarriers, SoleMatchingCarrier)
+{
+    parcel const p(1, 2, 3, 4);
+    double const expected_price = 123;
+    pricelist const unsuitable_carrier({{{1, 1, 1, 1}, 1}});
+    pricelist const carrier({{{10, 10, 10, 10}, expected_price}});
+    EXPECT_EQ(get_best_price(p, {unsuitable_carrier, carrier, unsuitable_carrier}), expected_price + 1);
 }
 
 TEST(ReindeerPricesTest, UnsupportedParcels) {
