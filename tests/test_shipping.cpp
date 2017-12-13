@@ -50,6 +50,15 @@ TEST(GetBestPriceAmongMultipleCarriers, SoleMatchingCarrier)
     EXPECT_EQ(get_best_price(p, {unsuitable_carrier, carrier, unsuitable_carrier}), expected_price);
 }
 
+TEST(GetBestPriceAmongMultipleCarriers, MultipleMatchingCarriers)
+{
+    parcel const p(1, 2, 3, 4);
+    double const best_price = 1;
+    pricelist const best_carrier({{p, best_price}});
+    pricelist const other_carrier({{p, best_price * 2}});
+    EXPECT_EQ(get_best_price(p, {other_carrier, best_carrier, other_carrier}), best_price);
+}
+
 TEST(ReindeerPricesTest, UnsupportedParcels) {
     double const delta = 0.01;
     EXPECT_THROW(get_best_price({120 + delta, 60, 60, 30}, reindeer_prices), std::runtime_error);
