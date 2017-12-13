@@ -19,4 +19,6 @@ pricelist const reindeer_prices({{{30, 20, 20, 2}, 2.99},
                                  {{60, 10, 60, 4}, 5.99},
                                  {{120, 60, 60, 30}, 14.99}});
 
+pricelist const fair_and_square_prices({});
+
 }
