@@ -21,12 +21,7 @@ pricelist const reindeer_prices({{{30, 20, 20, 2}, 2.99},
 
 double get_reindeer_price(parcel const & p)
 {
-    for (auto const & tariff : reindeer_prices.tariffs) {
-        if (tariff.available_for(p)) {
-            return tariff.get_price();
-        }
-    }
-    throw std::runtime_error("The parcel is too large");
+    return get_best_price(p, reindeer_prices);
 }
 
 }
