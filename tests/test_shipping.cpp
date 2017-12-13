@@ -26,6 +26,12 @@ TEST(GetBestPrice, PickCheapestMatchingTariff) {
     EXPECT_EQ(get_best_price(p, shipping::pricelist({more_expensive, cheapest})), cheapest.get_price());
 }
 
+TEST(GetBestPriceAmongMultipleCarriers, NoCarrier)
+{
+    parcel const p(1, 2, 3, 4);
+    EXPECT_THROW(get_best_price(p, {}), std::runtime_error);
+}
+
 TEST(ReindeerPricesTest, UnsupportedParcels) {
     double const delta = 0.01;
     EXPECT_THROW(get_best_price({120 + delta, 60, 60, 30}, reindeer_prices), std::runtime_error);
