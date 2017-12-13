@@ -64,9 +64,3 @@ TEST(ReindeerPricesTest, SupportedParcels) {
         EXPECT_EQ(get_best_price(parcel, reindeer_prices), expected_price);
     }
 }
-
-TEST(GetReindeerPriceTest, SecondLowestPriceWithSwappedDimensions) {
-    double const delta = 0.01;
-    EXPECT_EQ(get_best_price({20, 30 + delta, 20, 2}, reindeer_prices), 4.99);
-    EXPECT_EQ(get_best_price({20, 20, 30 + delta, 2}, reindeer_prices), 4.99);
-}
