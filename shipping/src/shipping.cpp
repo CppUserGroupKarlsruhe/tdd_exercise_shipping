@@ -16,13 +16,18 @@ double get_best_price(parcel const & parcel, pricelist const & tariffs)
 
 double get_best_price(parcel const & parcel, std::vector<pricelist> const & carriers)
 {
+    std::vector<double> matches;
     for (auto const & carrier : carriers) {
         try {
-            return get_best_price(parcel, carrier);
+            matches.push_back(get_best_price(parcel, carrier));
         } catch (std::runtime_error const &) {}
     }
 
-    throw std::runtime_error("No suitable carrier found for parcel");
+    if (not matches.empty()) {
+        return *std::min_element(matches.cbegin(), matches.cend());
+    } else {
+        throw std::runtime_error("No suitable carrier found for parcel");
+    }
 }
 
 pricelist const reindeer_prices({{{30, 20, 20, 2}, 2.99},
