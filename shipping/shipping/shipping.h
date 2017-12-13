@@ -4,8 +4,8 @@
 
 namespace shipping {
 
-double get_best_price(parcel const & parcel, pricelist const & tariffs);
+extern pricelist const reindeer_prices;
 
-double get_reindeer_price(parcel const & parcel);
+double get_best_price(parcel const & parcel, pricelist const & tariffs);
 
 }
