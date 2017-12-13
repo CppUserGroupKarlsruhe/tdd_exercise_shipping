@@ -6,6 +6,7 @@
 #include <stdexcept>
 
 using shipping::reindeer_prices;
+using shipping::fair_and_square_prices;
 using shipping::get_best_price;
 using shipping::parcel;
 
@@ -63,4 +64,10 @@ TEST(ReindeerPricesTest, SupportedParcels) {
         auto const expected_price = expectation.second;
         EXPECT_EQ(get_best_price(parcel, reindeer_prices), expected_price);
     }
+}
+
+TEST(FairAndSquarePricesTest, UnsupportedParcels) {
+    double const delta = 0.01;
+    EXPECT_THROW(get_best_price({100 + delta, 100, 100, 75}, fair_and_square_prices), std::runtime_error);
+    EXPECT_THROW(get_best_price({100, 100, 100, 75 + delta}, fair_and_square_prices), std::runtime_error);
 }
