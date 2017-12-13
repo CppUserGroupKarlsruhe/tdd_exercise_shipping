@@ -6,6 +6,11 @@ namespace shipping {
 
 double get_best_price(parcel const & parcel, pricelist const & tariffs)
 {
+    for (auto const & tariff : tariffs.tariffs) {
+        if (tariff.available_for(parcel)) {
+            return tariff.get_price();
+        }
+    }
     throw std::runtime_error("No suitable tariff found for parcel");
 }
 
