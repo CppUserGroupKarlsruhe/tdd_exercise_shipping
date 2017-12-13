@@ -1,11 +1,19 @@
 #include <shipping/shipping.h>
+#include <shipping/data_structures.h>
 
 #include <gtest/gtest.h>
 
 #include <stdexcept>
 
 using shipping::get_reindeer_price;
+using shipping::get_best_price;
 using shipping::parcel;
+
+TEST(GetBestPrice, FailOnNoSuitableTariff) {
+    parcel const p(1, 2, 3, 4);
+    shipping::tariff const unsuitable_tariff({1, 1, 1, 1}, 1);
+    EXPECT_THROW(get_best_price(p, {}), std::runtime_error);
+}
 
 
 TEST(GetReindeerPriceTest, FailOnParcelTooLarge) {
