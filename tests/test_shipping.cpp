@@ -71,3 +71,29 @@ TEST(FairAndSquarePricesTest, UnsupportedParcels) {
     EXPECT_THROW(get_best_price({100 + delta, 100, 100, 75}, fair_and_square_prices), std::runtime_error);
     EXPECT_THROW(get_best_price({100, 100, 100, 75 + delta}, fair_and_square_prices), std::runtime_error);
 }
+
+TEST(FairAndSquarePricesTest, SupportedParcels) {
+    double const delta = 0.01;
+    std::vector<std::pair<parcel, double>> expectations = {
+        {{1, 1, 1, 1}, 2.25},
+        {{15, 15, 15, 1.5}, 2.25},
+
+        {{15 + delta, 15, 15, 1.5}, 3.24},
+        {{15, 15, 15, 1.5 + delta}, 3.24},
+        {{25, 25, 25, 2.5}, 3.24},
+
+        {{25 + delta, 25, 25, 2.5}, 4},
+        {{25, 25, 25, 2.5 + delta}, 4},
+        {{35, 35, 35, 5}, 4},
+
+        {{35, 35, 35, 5}, 56.25},
+        {{35, 35, 35, 5}, 56.25},
+        {{100, 100, 100, 75}, 56.25}
+    };
+
+    for (auto const & expectation : expectations) {
+        auto const & parcel = expectation.first;
+        auto const expected_price = expectation.second;
+        EXPECT_EQ(get_best_price(parcel, reindeer_prices), expected_price);
+    }
+}
