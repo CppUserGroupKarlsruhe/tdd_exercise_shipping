@@ -17,6 +17,13 @@ TEST(GetBestPrice, FailOnNoSuitableTariff) {
     EXPECT_THROW(get_best_price(p, shipping::pricelist({unsuitable_tariff})), std::runtime_error);
 }
 
+TEST(GetBestPrice, PickCheapestMatchingTariff) {
+    parcel const p(1, 2, 3, 4);
+    shipping::tariff const cheapest({10, 10, 10, 10}, 1);
+    shipping::tariff const more_expensive({10, 10, 10, 10}, 2);
+
+    EXPECT_EQ(get_best_price(p, shipping::pricelist({more_expensive, cheapest})), cheapest.get_price());
+}
 
 TEST(GetReindeerPriceTest, FailOnParcelTooLarge) {
     double const delta = 0.01;
