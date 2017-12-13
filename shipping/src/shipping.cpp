@@ -14,6 +14,11 @@ double get_best_price(parcel const & parcel, pricelist const & tariffs)
     throw std::runtime_error("No suitable tariff found for parcel");
 }
 
+double get_best_price(parcel const & parcel, std::vector<pricelist> const & carriers)
+{
+    throw std::runtime_error("No suitable carrier found for parcel");
+}
+
 pricelist const reindeer_prices({{{30, 20, 20, 2}, 2.99},
                                  {{40, 30, 20, 5}, 4.99},
                                  {{60, 10, 60, 4}, 5.99},
@@ -25,3 +30,4 @@ pricelist const fair_and_square_prices({{{15, 15, 15, 1.5}, 2.25},
                                         {{100, 100, 100, 75}, 56.25}});
 
 }
+
